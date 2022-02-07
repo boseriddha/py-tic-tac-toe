@@ -1,6 +1,7 @@
 """
 This is a tic-tac-toe game.
 """
+import time
 from player import Player, HumanPlayer, ComputerPlayer
 
 class TicTacToe:
@@ -65,3 +66,36 @@ class TicTacToe:
 
     def num_empty_squares(self):
         return self.board.count(' ')
+
+# main function to play the game
+def play(game: TicTacToe, x_player: Player, o_player: Player, print_game=True):
+    if print_game:
+        game.print_nums_board()
+
+    # uppercase letters only
+    letter = 'X'
+
+    while game.empty_squares():
+        if letter == 'X':
+            square = x_player.get_move(game)
+        else:
+            square = o_player.get_move(game)
+
+        # making the move
+        if game.make_move(square, letter):
+            if print_game:
+                print(f"{letter} makes a move to square {square}")
+                game.print_board()
+                print('')
+            # checking the winner
+            if game.current_winner:
+                if print_game:
+                    print(f"{letter} wins!")
+                return letter
+            letter = 'O' if letter == 'X' else 'X'
+        # delay for the computer
+        time.sleep(.8)
+
+        # condition for no winner
+        if print_game:
+            print('It\'s a tie!')
