@@ -35,6 +35,7 @@ class TicTacToe:
             if self.check_winner(square, letter):
                 self.current_winner = letter
                 return True
+            return True
         return False
 
     def check_winner(self, square, letter):
@@ -68,7 +69,7 @@ class TicTacToe:
         return self.board.count(' ')
 
 # main function to play the game
-def play(game: TicTacToe, x_player: Player, o_player: Player, print_game=True):
+def play(game: TicTacToe, x_player, o_player, print_game=True):
     if print_game:
         game.print_nums_board()
 
@@ -96,26 +97,29 @@ def play(game: TicTacToe, x_player: Player, o_player: Player, print_game=True):
         # delay for the computer
         time.sleep(.8)
 
-        # condition for no winner
-        if print_game:
-            print('It\'s a tie!')
+    # condition for no winner
+    if print_game:
+        print('It\'s a tie!')
 
 # driver code
 if __name__ == "__main__":
     t = TicTacToe()
-    print("Enter a choice:")
-    print('Player X:')
-    val1 = input('1. Human Player\n2. Computer Player')
-    print('Player O:')
-    val2 = input('1. Human Player\n2. Computer Player')
-    if val1 == 1:
-        x_player = HumanPlayer('X')
-    else:
-        x_player = ComputerPlayer('X')
+    print('Welcome to TicTacToe')
+    player_x = HumanPlayer('X')
+    player_o = ComputerPlayer('O')
+    # print("Enter a choice:")
+    # print('Player X:')
+    # val1 = input('1. Human Player\n2. Computer Player\n')
+    # print('Player O:')
+    # val2 = input('1. Human Player\n2. Computer Player\n')
+    # if val1 == 1:
+    #     player_x = HumanPlayer('X')
+    # else:
+    #     player_x = ComputerPlayer('X')
+    #
+    # if val2 == 1:
+    #     player_o = HumanPlayer('O')
+    # else:
+    #     player_o = ComputerPlayer('O')
 
-    if val2 == 1:
-        o_player = HumanPlayer('O')
-    else:
-        o_player = ComputerPlayer('O')
-
-    play(t, x_player, o_player, print_game=True)
+    play(t, player_x, player_o, print_game=True)
