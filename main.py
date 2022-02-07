@@ -35,3 +35,27 @@ class TicTacToe:
                 self.current_winner = letter
                 return True
         return False
+
+    def check_winner(self, square, letter):
+        # check the row
+        row_index = square // 3
+        row = [self.board[row_index*3 + i] for i in range(3)]
+        if all([spot == letter for spot in row]):
+            return True
+
+        # check column
+        column_index = square % 3
+        column = [self.board[column_index + i*3] for i in range(3)]
+        if all([spot == letter for spot in column]):
+            return True
+
+        # check diagonal
+        if square % 2 == 0:
+            diagonal1 = [self.board[i] for i in range(0, 9, 4)]
+            if all([spot == letter for spot in diagonal1]):
+                return True
+            diagonal2 = [self.board[i] for i in range(2, 7, 2)]
+            if all([spot == letter for spot in diagonal2]):
+                return True
+
+        return False
