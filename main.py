@@ -2,6 +2,7 @@
 This is a tic-tac-toe game.
 """
 import time
+import random
 from player import Player, HumanPlayer, ComputerPlayer
 
 class TicTacToe:
@@ -101,25 +102,34 @@ def play(game: TicTacToe, x_player, o_player, print_game=True):
     if print_game:
         print('It\'s a tie!')
 
+def quotes():
+    quotes_list = ['Woah! That was a tough one.', 'Nice!', 'Hurray!', 'Let\'s Go!']
+    return random.choice(quotes_list)
+
 # driver code
 if __name__ == "__main__":
     t = TicTacToe()
-    print('Welcome to TicTacToe')
-    player_x = HumanPlayer('X')
-    player_o = ComputerPlayer('O')
-    # print("Enter a choice:")
-    # print('Player X:')
-    # val1 = input('1. Human Player\n2. Computer Player\n')
-    # print('Player O:')
-    # val2 = input('1. Human Player\n2. Computer Player\n')
-    # if val1 == 1:
-    #     player_x = HumanPlayer('X')
-    # else:
-    #     player_x = ComputerPlayer('X')
-    #
-    # if val2 == 1:
-    #     player_o = HumanPlayer('O')
-    # else:
-    #     player_o = ComputerPlayer('O')
+    player_x = None
+    player_o = None
+    ans = 'y'
+    print('Welcome to TicTacToe!')
+    while ans == 'y':
+        print("Enter a choice:")
+        print('Player X:')
+        val1 = int(input('1. Human Player\n2. Computer Player\n'))
+        if val1 == 1:
+            player_x = HumanPlayer('X')
+        else:
+            player_x = ComputerPlayer('O')
+        print('Player O:')
+        val2 = int(input('1. Human Player\n2. Computer Player\n'))
+        if val2 == 1:
+            player_o = HumanPlayer('O')
+        else:
+            player_o = ComputerPlayer('O')
+        play(t, player_x, player_o, print_game=True)
+        print(quotes())
+        time.sleep(.8)
+        ans = input('Do you want to play another game? (y/n)\n')
 
-    play(t, player_x, player_o, print_game=True)
+    print('Thank You!')
