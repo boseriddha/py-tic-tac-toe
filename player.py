@@ -38,3 +38,9 @@ class HumanPlayer(Player):
             except ValueError:
                 print("Invalid move, please try again!")
         return val
+
+"""
+All code by Riddha Bose.
+Email - boseriddha@gmail.com
+Instagram - @ridbose
+"""

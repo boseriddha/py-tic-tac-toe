@@ -133,3 +133,9 @@ if __name__ == "__main__":
         ans = input('Do you want to play another game? (y/n)\n')
 
     print('Thank You!')
+
+"""
+All code by Riddha Bose.
+Email - boseriddha@gmail.com
+Instagram - @ridbose
+"""
