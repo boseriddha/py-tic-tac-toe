@@ -27,3 +27,11 @@ class TicTacToe:
     def available_moves(self):
         moves = [i for i, spot in enumerate(self.board) if spot == ' ']
         return moves
+
+    def make_move(self, square, letter):
+        if self.board[square] == ' ':
+            self.board[square] = letter
+            if self.check_winner(square, letter):
+                self.current_winner = letter
+                return True
+        return False
