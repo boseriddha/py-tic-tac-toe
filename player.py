@@ -2,7 +2,6 @@
 This file contains the player class
 """
 
-import math
 import random
 
 class Player:
